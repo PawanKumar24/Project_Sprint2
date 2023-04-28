@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `spaceship` (
   KEY `captainid` (`captainid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
--- Dumping data for table interstellar cargo transportation.spaceship: 3 rows
+--  Dumping data for table interstellar cargo transportation.spaceship: 3 rows
 /*!40000 ALTER TABLE `spaceship` DISABLE KEYS */;
 INSERT INTO `spaceship` (`id`, `maxweight`, `captainid`) VALUES
 	(1, 10000, 2),
