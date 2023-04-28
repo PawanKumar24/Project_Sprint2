@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Captain</title>
+	<link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+	{% extends "template.html" %}
+
+	{% block content %}
+	{% include "navbar.html" %}
+	<!-- {% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-success">{{ message }}</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %} -->
+	<h1 class="text-center">Welcome To Captain Page</h1>
+	<div class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<table class="table table-striped" border="1">
+					<thead>
+						<tr>
+							<th>Captain No.</th>
+							<th>Firsrt Name</th>
+							<th>Last Name</th>
+							<th>Rank</th>
+							<th>Home Planet</th>
+							<th colspan="2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in captain_data %}
+						<tr>
+							<td>{{ loop.index }}</td>
+							<td>{{ item.firstname }}</td>
+							<td>{{ item.lastname }}</td>
+							<td>{{ item.rank }}</td>
+							<td>{{ item.homeplanet }}</td>
+							<td><a href="/captain/delete/{{loop.index}}" class="btn btn-danger btn-sm">Delete</button></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6 text-center" >
+				<button id="add-captain-btn" class="btn btn-primary">Add Captain</button>
+				<button id="update-captain-btn" class="btn btn-primary">Update captain</button>
+				<!-- <button id="delete-captain-btn" class="btn btn-danger">Delete captain</button> -->
+			</div>
+		</div>
+	</div>
+
+	<div id="add-captain-form" style="display: none;">
+		<!-- Add captain form goes here -->
+		<div class="container my-5">
+			<div class="row justify-content-center">
+				<div class="col-md-6 border mt-2">
+					<h2 class="text-center mt-4">Add New captain</h2>
+					<form action="{{ url_for('add_captain') }}" method="POST">
+						<div class="form-group">
+							<label for="firstname">First Name:</label>
+							<input type="text" class="form-control" id="firstname" name="firstname">
+						</div>
+						<div class="form-group">
+							<label for="lastname">Last Name:</label>
+							<input type="text" class="form-control" id="lastname" name="lastname">
+						</div>
+						<div class="form-group">
+							<label for="rank">Rank:</label>
+							<input type="text" class="form-control" id="rank" name="rank">
+						</div>
+						<div class="form-group">
+							<label for="homeplanet">Home Planet:</label>
+							<input type="text" class="form-control" id="homeplanet" name="homeplanet">
+						</div>
+						<button id="add-captain-btn" type="submit" class="btn btn-primary mb-4">Add Captain</button>
+					</form>
+					<div id="message" style="display: none;">
+						<div class="alert alert-success" role="alert">Captain added successfully.</div>
+						<div class="alert alert-danger" role="alert">Captain addition failed.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="update-captain-form" style="display: none;">
+		<!-- update captain form goes here -->
+		<div class="container my-5">
+			<div class="row justify-content-center">
+				<div class="col-md-6 border mt-2">
+					<h2 class="text-center mt-4">Update Captain</h2>
+					<form action="{{url_for('update_captain')}}" method="POST">
+						<div class="form-group">
+							<label for="id">ID of record to update:</label>
+							<input type="number" class="form-control" id="id" name="id">
+						</div>
+						<div class="form-group">
+							<label for="firstname">First Name:</label>
+							<input type="text" class="form-control" id="firstname" name="firstname">
+						</div>
+						<div class="form-group">
+							<label for="lastname">Last Name:</label>
+							<input type="text" class="form-control" id="lastname" name="lastname">
+						</div>
+						<div class="form-group">
+							<label for="rank">Rank:</label>
+							<input type="text" class="form-control" id="rank" name="rank">
+						</div>
+						<div class="form-group">
+							<label for="homeplanet">Home Planet:</label>
+							<input type="text" class="form-control" id="homeplanet" name="homeplanet">
+						</div>
+						<button id="update-captain-btn" type="submit" class="btn btn-primary mb-4">Update captain</button>
+					</form>
+					<div id="message" style="display: none;">
+						<div class="alert alert-success" role="alert">Captain details updated successfully.</div>
+						<div class="alert alert-danger" role="alert">Captain details update failed.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var addCaptainBtn = document.getElementById("add-captain-btn");
+		var updateCaptainBtn = document.getElementById("update-captain-btn");
+		var addCaptainForm = document.getElementById("add-captain-form");
+		var updateCaptainForm = document.getElementById("update-captain-form");
+		
+		addCaptainBtn.addEventListener("click", function () {
+			console.log("clicked add captain btn")
+			addCaptainForm.style.display = "block";
+			updateCaptainForm.style.display = "none";
+		});
+
+		updateCaptainBtn.addEventListener("click", function () {
+			console.log("clicked update captain btn")
+			updateCaptainForm.style.display = "block";
+			addCaptainForm.style.display = "none";
+		});
+		
+	</script>
+	{% endblock %}
+</body>
+
+</html>

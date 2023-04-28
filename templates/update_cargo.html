@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block title %} UPDATE CARGO {% endblock %}
+{% block content %} 
+{% include "navbar.html" %}
+<div id="update-cargo-form" style="display: none;">
+    <!-- Update Cargo form goes here -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 border mt-2">
+                <h2 class="text-center mt-4">Update Cargo Form</h2>
+                <form action= "/cargo/update/{{cargo_to_update.id}} " id="update-cargo-form" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Weight" value="{{cargo_to_update.weight}}" name="weight">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Cargo Type" value="{{cargo_to_update.cargotype}}" name="cargo_type">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Deparure" value="{{cargo_to_update.departure}}" name="departure">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Arrival" value="{{cargo_to_update.arrival}}" name="arrival">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ship ID" value="{{cargo_to_update.shipid}}" name="shipid">
+                    </div>
+                    <button id="update-cargo-btn" type="submit"
+                        class="btn btn-primary mb-4 text-center">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
