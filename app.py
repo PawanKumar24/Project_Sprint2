@@ -18,7 +18,7 @@ mydb = pymysql.connect(
 #   user = "admin",
 #   password = "Htown.2022",
 #   database = "CargoDB"
-# )
+#  )
 
 @app.route('/cargo')
 def cargo():
