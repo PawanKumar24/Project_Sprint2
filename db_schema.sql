@@ -26,3 +26,5 @@ CREATE TABLE captain (
     homeplanet VARCHAR(50),
     PRIMARY KEY (id)
 );
+
+
